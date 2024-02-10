@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment One</title>
+</head>
+<body>
+    <p>Profile Picture : </p>
+    <img id="image"></img>
+    <p>Followers : </p><div id="followers-count"></div>
+    <button id="get-btn">Get Data</button>
+</body>
+<script>
+
+
+    const Image = document.getElementById('image');
+    const followersCount = document.getElementById('followers-count');
+
+    document.getElementById('get-btn').addEventListener('click',function(e){
+
+    const requestURL = 'https://api.github.com/users/k-ghale'
+
+    const xhs = new XMLHttpRequest();
+    xhs.open('GET',requestURL);
+    xhs.send()    
+    xhs.onreadystatechange = function(){
+        
+        if(this.readyState === 3){
+            const data = JSON.parse(this.responseText);
+            console.log(this.readyState)
+            console.log(data)
+
+            //const mydata = document.getElementById('image').src = `${data.avatar_url}`
+            document.getElementById('image').src = data.avatar_url
+            
+
+            //console.log(mydata)
+            document.getElementById('followers-count').innerText = data.followers
+
+        }
+    }
+        
+    console.log("DONE")
+    //document.getElementById('image').style.imageRendering =requestURL(this.) 
+
+
+    })
+
+</script>
+</html>
