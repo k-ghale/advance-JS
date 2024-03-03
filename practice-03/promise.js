@@ -115,5 +115,34 @@ fetch("https://api.github.com/users/k-ghale")
     console.log(data);
   })
   .catch((err) => {
-    console.log("WRONG");
+    console.log("WRONG",err);
   });
+
+// fetch("url")
+//   .then((res) => {
+//     return res.json;
+//   })
+//   .then((data) => {
+//     console.log(data);
+//   })
+//   .catch((e) => {
+//     console.log("SOME ERROR OCCURRED!");
+//   });
+
+const promiseNext = new Promise(function(resolve,reject){
+  setTimeout(function(){
+    let err = false;
+    if(!err){
+    resolve({username: 'Kabin' , password : '1234'});
+    }
+    else{
+      reject("ERROR : Something went wrong !");
+    }
+  },1000)
+})
+
+promiseNext.then(
+  (user) => {
+    console.log(user)
+  }
+)
